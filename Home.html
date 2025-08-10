@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SAMP RYZEN Hosting — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --neon:#ff003c;
+  --glass: rgba(255,255,255,0.04);
+  --muted: rgba(255,255,255,0.7);
+  --white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* NAV */
+.nav{
+  position:fixed;left:0;right:0;top:18px;display:flex;justify-content:center;gap:16px;z-index:1200;
+  pointer-events:none;
+}
+.nav a{
+  pointer-events:auto;
+  color:var(--white);padding:10px 16px;border-radius:10px;
+  background:transparent;
+  border:1px solid transparent;backdrop-filter:blur(6px);
+  transition:all .25s;
+  text-decoration:none;font-weight:600;
+}
+.nav a:hover{ box-shadow:0 0 20px rgba(255,0,60,.12); border:1px solid rgba(255,0,60,.08); transform:translateY(-3px) }
+
+/* HERO */
+.hero{
+  position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:20px;
+  /* GANTI FOTO DI SINI -> masukkan foto kamu (PC/HP friendly) */
+  background-image: url('foto-kamu.gif');
+  background-size:cover;background-position:center center;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,10,10,0.45), rgba(0,0,0,0.7));
+  z-index:1;
+}
+/* animated chip overlay (optional GIF) */
+.hero .chip{
+  position:absolute;inset:0;background:url('') center/cover no-repeat;opacity:.12;mix-blend-mode:screen;filter:blur(2px);
+  z-index:2;pointer-events:none;
+}
+.container{position:relative;z-index:3;max-width:1200px;padding:30px;text-align:center}
+
+/* main title */
+.title{
+  font-weight:900;font-size:clamp(32px,6vw,64px);letter-spacing:0.5px;
+  color:var(--neon);
+  text-shadow:0 0 10px rgba(255,0,60,.15), 0 0 40px rgba(255,0,60,.08);
+  transform:translateY(-10px);
+}
+.subtitle{
+  margin-top:14px;color:var(--muted);font-weight:500;font-size:clamp(14px,2vw,20px);max-width:850px;margin-inline:auto;
+  opacity:0.95;
+}
+
+/* CTA group */
+.ctas{margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:12px 22px;border-radius:10px;font-weight:700;border:0;cursor:pointer;
+  box-shadow:0 6px 30px rgba(255,0,60,.08);transition:all .22s;
+}
+.btn-primary{background:linear-gradient(90deg,var(--neon),#ff5a6f);color:#fff;box-shadow:0 0 25px rgba(255,0,60,.18)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--white)}
+.btn-primary:hover{transform:translateY(-4px);filter:brightness(1.03)}
+.btn-outline:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(255,0,60,.06)}
+
+/* particle canvas */
+#particles{position:absolute;inset:0;z-index:0;opacity:.7;pointer-events:none}
+
+/* sections */
+.section{padding:80px 22px;background:transparent}
+.inner{max-width:1200px;margin:0 auto}
+
+/* WHY US (animated infographics) */
+.grid-3{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;
+}
+.card{
+  background:var(--glass);border-radius:14px;padding:22px;text-align:center;
+  border:1px solid rgba(255,255,255,.03);backdrop-filter: blur(8px);
+  transition:transform .3s, box-shadow .3s;overflow:hidden;position:relative;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(0,0,0,.6)}
+.card .icon{width:86px;height:86px;margin:0 auto 12px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));box-shadow:0 6px 20px rgba(255,0,60,.04)}
+.card h3{margin-bottom:6px;color:var(--neon)}
+.card p{font-size:14px;color:var(--muted)}
+
+/* PRICING PREVIEW on home */
+.pricing-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.price-card{
+  width:320px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,.03);transition:transform .35s;cursor:default;
+}
+.price-card:hover{transform:translateY(-10px)}
+.price-head{display:flex;align-items:center;justify-content:space-between}
+.price{font-weight:800;font-size:22px;color:var(--neon)}
+.features-list{margin-top:12px;text-align:left;font-size:13px;color:var(--muted);line-height:1.6}
+.buy{display:block;margin-top:14px;padding:10px 14px;border-radius:10px;text-align:center;background:var(--neon);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(255,0,60,.12)}
+
+/* TESTIMONIALS slider */
+.slider{display:flex;gap:12px;overflow:hidden;position:relative}
+.slide-track{display:flex;gap:12px;transition:transform .7s cubic-bezier(.22,.9,.3,1)}
+.testi{
+  min-width:300px;background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03)
+}
+
+/* FOOTER CTA */
+.footer-cta{
+  margin-top:26px;padding:36px;border-radius:14px;background:linear-gradient(90deg,rgba(255,0,60,0.12), rgba(10,10,10,0.4));text-align:center;
+}
+
+/* responsive */
+@media (max-width:720px){
+  .title{font-size:32px}
+  .price-card{width:92%}
+  .nav{top:10px}
+}
+
+/* small micro animations */
+.fade-in{opacity:0;transform:translateY(10px);transition:all .8s ease}
+.fade-in.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- particles canvas -->
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="Home.html">Home</a>
+  <a href="Produk.html">Produk</a>
+  <a href="discord_about.html">Discord </a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="title fade-in" data-delay="0">SAMP RYZEN Hosting</div>
+    <div class="subtitle fade-in" data-delay="120">
+      Hosting SAMP berperforma tinggi — didukung prosesor AMD Ryzen, proteksi DDoS, dan uptime stabil untuk komunitas servermu. Cocok untuk PC & HP.
+    </div>
+    <div class="ctas fade-in" data-delay="240" style="justify-content:center">
+      <a class="btn btn-primary" href="Produk.html">Lihat Paket</a>
+      <a class="btn btn-outline" href="discord_about.html">Order Sekarang</a>
+    </div>
+
+    <!-- small pricing preview -->
+    <div class="pricing-row fade-in" data-delay="360" style="margin-top:34px">
+      <div class="price-card">
+        <div class="price-head"><strong>SAMP Budget</strong><div class="price">Rp 50.000</div></div>
+        <div class="features-list">
+          • Slots: 50<br>• SSD 20GB • Ryzen 5<br>• DDoS Proteksi • Uptime 99.9%
+        </div>
+        <a class="buy" href="Order.html?plan=SAMP%20Budget">Beli</a>
+      </div>
+      <div class="price-card">
+        <div class="price-head"><strong>SAMP Cloud</strong><div class="price">Rp 150.000</div></div>
+        <div class="features-list">
+          • Slots: 150<br>• SSD 50GB • Ryzen 7<br>• Uptime 99.99% • Lokasi SG
+        </div>
+        <a class="buy" href="Order.html?plan=SAMP%20Cloud">Beli</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="inner">
+    <h2 class="section-title" style="text-align:center;margin-bottom:22px">Kenapa Pilih SAMP RYZEN?</h2>
+    <div class="grid-3">
+      <div class="card fade-in" data-delay="80">
+        <div class="icon">⚡</div>
+        <h3>Kecepatan Maksimal</h3>
+        <p>Infrastruktur NVMe + CPU Ryzen untuk latensi rendah dan performa stabil di kondisi puncak.</p>
+      </div>
+      <div class="card fade-in" data-delay="160">
+        <div class="icon">🛡️</div>
+        <h3>Proteksi DDoS</h3>
+        <p>Layered DDoS mitigation membuat server aman dari serangan sehingga pemain tetap nyaman.</p>
+      </div>
+      <div class="card fade-in" data-delay="240">
+        <div class="icon">⏱️</div>
+        <h3>Uptime Terjamin</h3>
+        <p>SLA uptime tinggi, monitoring 24/7, dan support responsif saat ada masalah.</p>
+      </div>
+    </div>
+
+    <div class="footer-cta fade-in" data-delay="360">
+      <strong style="font-size:18px">Siap punya server SAMP kencang?</strong>
+      <div style="margin-top:12px">
+        <a class="btn btn-primary" href="Order.html">Order Sekarang</a>
+        <a class="btn btn-outline" href="Order.html?help=ticket">Open Ticket</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" aria-label="testimonials">
+  <div class="inner">
+    <h2 class="section-title">Testimoni Pelanggan</h2>
+
+    <div class="slider" id="slider" style="margin-top:12px">
+      <div class="slide-track" id="track">
+        <div class="testi fade-in" data-delay="80">
+          <strong>Andi</strong>
+          <p style="margin:10px 0;font-style:italic">"Servernya super stabil, lag jarang banget. Support cepat jawab tiap jam!"</p>
+        </div>
+        <div class="testi fade-in" data-delay="160">
+          <strong>Budi</strong>
+          <p style="margin:10px 0;font-style:italic">"Harga terjangkau, performa premium. Rekomended buat komunitas kami."</p>
+        </div>
+        <div class="testi fade-in" data-delay="240">
+          <strong>Sari</strong>
+          <p style="margin:10px 0;font-style:italic">"Migrasi gampang dan tim support bantu terus sampai live. Mantap!"</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- small footer -->
+<footer style="padding:24px;text-align:center;color:var(--muted)">
+  © <span id="year"></span> SAMP RYZEN Hosting — All rights reserved.
+</footer>
+
+<script>
+/* ============ particles (simple) ============ */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w=canvas.width=innerWidth, h=canvas.height=innerHeight;
+window.addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; init(); });
+
+let particles=[];
+function rand(min,max){ return Math.random()*(max-min)+min; }
+function Particle(){
+  this.x=rand(0,w); this.y=rand(0,h);
+  this.s=rand(0.6,2.2); this.vx=rand(-0.15,0.15); this.vy=rand(-0.05,0.1);
+  this.a=rand(0.05,0.2);
+}
+Particle.prototype.draw=function(){
+  ctx.beginPath();
+  ctx.fillStyle="rgba(255,0,60,"+ (0.06*this.s) +")";
+  ctx.arc(this.x,this.y,this.s,0,Math.PI*2);
+  ctx.fill();
+}
+function init(){
+  particles=[]; let total=Math.floor((w*h)/90000);
+  for(let i=0;i<total;i++) particles.push(new Particle());
+}
+function anim(){
+  ctx.clearRect(0,0,w,h);
+  for(let p of particles){
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0) p.x=w; if(p.x>w) p.x=0;
+    if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+    p.draw();
+  }
+  requestAnimationFrame(anim);
+}
+init(); anim();
+
+/* ============ scroll reveal simple ============ */
+const faders = document.querySelectorAll('.fade-in');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const delay = el.dataset.delay || 0;
+      setTimeout(()=> el.classList.add('show'), Number(delay));
+      io.unobserve(el);
+    }
+  })
+},{threshold:0.15});
+faders.forEach(f=>io.observe(f));
+
+/* ============ testimonials auto slide ============ */
+const track=document.getElementById('track');
+let idx=0;
+function slideTesti(){
+  const slides = track.children.length;
+  idx = (idx+1)%slides;
+  track.style.transform = `translateX(${ - (idx * (320 + 12)) }px)`;
+}
+setInterval(slideTesti,4200);
+
+/* ============ parallax mouse on hero ============ */
+const hero = document.getElementById('hero');
+hero.addEventListener('mousemove', (e)=>{
+  const rect = hero.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  const y = (e.clientY - rect.top) / rect.height;
+  hero.style.backgroundPosition = `${50 + (x-0.5)*6}% ${50 + (y-0.5)*6}%`;
+});
+window.onload = ()=> document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAMP RYZEN Hosting — Produk</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--neon:#ff003c;--glass:rgba(255,255,255,.04);--muted:rgba(255,255,255,.75)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:#fff;padding-top:70px}
+.header{position:fixed;top:8px;left:0;right:0;display:flex;justify-content:center;gap:12px;z-index:900}
+.header a{padding:8px 12px;border-radius:8px;color:#fff;text-decoration:none}
+.container{max-width:1200px;margin:30px auto;padding:18px}
+
+/* page title */
+.h-title{font-size:28px;font-weight:800;color:var(--neon);margin-bottom:6px}
+.h-sub{color:var(--muted);margin-bottom:20px}
+
+/* grid */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;
+}
+
+/* card */
+.plan{
+  perspective:1200px;
+}
+.plan-inner{
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,.04);
+  transform-origin:center;transition:transform .38s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+}
+.plan:hover .plan-inner{transform:translateY(-14px) rotateX(3deg);box-shadow:0 30px 80px rgba(0,0,0,.72)}
+.badge{display:inline-block;padding:6px 9px;border-radius:8px;background:rgba(255,0,60,.12);color:var(--neon);font-weight:700;margin-bottom:10px}
+
+/* price */
+.price{font-size:22px;font-weight:900;color:var(--neon);margin:8px 0}
+.specs{font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px}
+.specs li{margin:6px 0;list-style:none;display:flex;justify-content:space-between}
+.cta{display:flex;gap:8px;margin-top:14px}
+.btn{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn-buy{background:linear-gradient(90deg,var(--neon),#ff7a8b);color:#fff;box-shadow:0 12px 40px rgba(255,0,60,.12)}
+.btn-details{background:transparent;border:1px solid rgba(255,255,255,.04);color:#fff}
+
+/* small icons */
+.icon{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.02);display:inline-flex;align-items:center;justify-content:center;margin-right:8px}
+
+/* responsive */
+@media(max-width:720px){.h-title{font-size:22px}.container{padding:12px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="Home.html">Home</a>
+  <a href="Produk.html">Produk</a>
+  <a href="discord_about.html">Discord</a>
+</div>
+
+<div class="container">
+  <div class="h-title">Paket Hosting — SAMP RYZEN</div>
+  <div class="h-sub">Pilih paket sesuai kebutuhan servermu. Semua paket dilengkapi proteksi DDoS & support plugin/voice.</div>
+
+  <div class="grid">
+
+    <!-- Budget -->
+    <div class="plan">
+      <div class="plan-inner">
+        <div class="badge">Terlaris</div>
+        <h3>SAMP Budget (Windows & Linux)</h3>
+        <div class="price">Rp 50.000 / bln</div>
+        <ul class="specs">
+          <li><span>Player Slots</span><strong>50</strong></li>
+          <li><span>RAM</span><strong>Unlimited</strong></li>
+          <li><span>CPU</span><strong>Ryzen 5</strong></li>
+          <li><span>SSD</span><strong>20GB NVMe</strong></li>
+          <li><span>Support</span><strong>Voice & Plugins</strong></li>
+          <li><span>Uptime</span><strong>99.9%</strong></li>
+          <li><span>DDoS</span><strong>Layered</strong></li>
+          <li><span>Lokasi</span><strong>Jakarta</strong></li>
+        </ul>
+        <div class="cta">
+          <button class="btn btn-buy" onclick="goOrder('SAMP Budget','50000')">Beli Sekarang</button>
+          <a class="btn btn-details" href="#details1">Detail</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloud -->
+    <div class="plan">
+      <div class="plan-inner">
+        <div class="badge" style="background:rgba(255,0,60,.06);color:var(--white)">Populer</div>
+        <h3>SAMP Cloud</h3>
+        <div class="price">Rp 150.000 / bln</div>
+        <ul class="specs">
+          <li><span>Player Slots</span><strong>150</strong></li>
+          <li><span>RAM</span><strong>Unlimited</strong></li>
+          <li><span>CPU</span><strong>Ryzen 7</strong></li>
+          <li><span>SSD</span><strong>50GB NVMe</strong></li>
+          <li><span>Support</span><strong>Voice & Plugins</strong></li>
+          <li><span>Uptime</span><strong>99.99%</strong></li>
+          <li><span>DDoS</span><strong>Layered + Scrubbing</strong></li>
+          <li><span>Lokasi</span><strong>Singapura</strong></li>
+        </ul>
+        <div class="cta">
+          <button class="btn btn-buy" onclick="goOrder('SAMP Cloud','150000')">Beli Sekarang</button>
+          <a class="btn btn-details" href="#details2">Detail</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dedicated -->
+    <div class="plan">
+      <div class="plan-inner">
+        <div class="badge" style="background:linear-gradient(90deg,#ffd0d6,#ff7a8b);color:#111">Premium</div>
+        <h3>SAMP Dedicated</h3>
+        <div class="price">Rp 500.000 / bln</div>
+        <ul class="specs">
+          <li><span>Player Slots</span><strong>Unlimited</strong></li>
+          <li><span>RAM</span><strong>Unlimited</strong></li>
+          <li><span>CPU</span><strong>Ryzen 9</strong></li>
+          <li><span>SSD</span><strong>250GB NVMe</strong></li>
+          <li><span>Support</span><strong>Priority</strong></li>
+          <li><span>Uptime</span><strong>100%</strong></li>
+          <li><span>DDoS</span><strong>Premium Scrubbing</strong></li>
+          <li><span>Lokasi</span><strong>Eropa/AS</strong></li>
+        </ul>
+        <div class="cta">
+          <button class="btn btn-buy" onclick="goOrder('SAMP Dedicated','500000')">Beli Sekarang</button>
+          <a class="btn btn-details" href="#details3">Detail</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- extras -->
+  <div style="margin-top:22px;color:var(--muted);font-size:14px">Semua harga bisa disesuaikan dengan billing cycle. Diskon tersedia untuk pembayaran 3/6/12 bulan, chat open ticket untuk wholesale.</div>
+</div>
+
+<script>
+function goOrder(plan,price){
+  const url = `Order.html?plan=${encodeURIComponent(plan)}&price=${encodeURIComponent(price)}`;
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>

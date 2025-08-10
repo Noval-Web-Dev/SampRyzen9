@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Discord - SAMP RYZEN Hosting</title>
+<style>
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Navigasi */
+.header {
+  background: rgba(15,15,15,0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.header a:hover {
+  color: #ff003c;
+  text-shadow: 0 0 10px #ff003c;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)), url('ryzen.png') center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+.hero h1 {
+  font-size: 50px;
+  color: #ff003c;
+  text-shadow: 0 0 20px #ff003c;
+}
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+}
+
+/* Konten */
+.container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(255,0,60,0.2);
+  animation: slideUp 1s ease forwards;
+}
+.card h2 {
+  color: #ff003c;
+}
+.card p {
+  line-height: 1.6;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ff003c;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ff003c;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #ff1f52;
+  box-shadow: 0 0 20px #ff003c;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes slideUp {
+  from {transform: translateY(30px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+/* responsive */
+@media(max-width:720px){
+  .h-title {font-size:22px}
+  .container {padding:12px}
+  .hero h1 {font-size: 32px;}
+  .hero p {font-size: 14px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="Home.html">Home</a>
+  <a href="Produk.html">Produk</a>
+  <a href="discord_about.html">Discord</a>
+</div>
+
+<div class="hero">
+  <h1 class="h-title">Tentang Discord Kami</h1>
+  <p>Tempat berkumpulnya komunitas SAMP RYZEN Hosting. Dapatkan info, support, dan teman baru.</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h2>📢 Info & Update</h2>
+    <p>Discord kami adalah pusat informasi resmi untuk semua pengumuman, update server, dan promo terbaru.</p>
+  </div>
+
+  <div class="card">
+    <h2>💬 Komunitas Aktif</h2>
+    <p>Bergabunglah dengan komunitas pemain SAMP yang aktif. Temukan teman bermain, diskusikan strategi, atau sekadar mengobrol santai.</p>
+  </div>
+
+  <div class="card">
+    <h2>🎧 Support 24/7</h2>
+    <p>Tim support kami selalu siap membantu Anda kapan saja melalui channel bantuan di Discord.</p>
+    <a class="btn" href="https://discord.gg/yourserverlink" target="_blank">Gabung Sekarang</a>
+  </div>
+</div>
+
+</body>
+</html>
